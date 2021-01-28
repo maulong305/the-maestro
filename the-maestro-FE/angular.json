@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "the-maestro-FE"
+  "defaultProject": "the-maestro-FE",
+  "cli": {
+    "analytics": "2076d0a0-69b0-48c0-9253-fa054b5a6ae5"
+  }
 }
