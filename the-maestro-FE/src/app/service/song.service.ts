@@ -15,4 +15,7 @@ export class SongService {
   createSong(song: Song): Observable<Song>{
     return this.httpClient.post<Song>(API_URL + `/songs/create`, song)
   }
+  listSong(): Observable<Song[]>{
+    return this.httpClient.get<Song[]>(API_URL +`/songs/`)
+  }
 }

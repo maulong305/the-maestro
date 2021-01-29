@@ -1,1 +1,30 @@
-<p>list-song works!</p>
+<div class="container">
+    <table class="table table-striped" border="2">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">file</th>
+            <th scope="col">createdAt</th>
+            <th scope="col">numberOfView</th>
+            <th scope="col">author</th>
+            <th scope="col">avatar</th>
+            <th scope="col">lyric</th>
+            <th scope="col">user</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let song of listSong; let i = index">
+                <td>{{song.id}}</td>
+                <td>{{song.name}}</td>
+                <td>{{song.file}}</td>
+                <td>{{song.createdAt}}</td>
+                <td>{{song.numberOfView}}</td>
+                <td>{{song.author}}</td>
+                <td>{{song.avatar}}</td>
+                <td>{{song.lyric}}</td>
+                <td>{{song.user}}</td>
+            </tr>
+        </tbody>
+      </table>
+</div>
