@@ -5,6 +5,15 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
+  firebaseConfig: {
+    apiKey: "AIzaSyAjM7KudmENrT_mUKFygKdziuJbO4CnNX4",
+    authDomain: "the-maestro-97cdc.firebaseapp.com",
+    projectId: "the-maestro-97cdc",
+    storageBucket: "the-maestro-97cdc.appspot.com",
+    messagingSenderId: "993999235813",
+    appId: "1:993999235813:web:f111d7daae1f389e24c20c",
+    measurementId: "G-PBNJL5K5BV"
+  },
 };
 
 /*
