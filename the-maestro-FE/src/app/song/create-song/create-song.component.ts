@@ -16,8 +16,6 @@ export class CreateSongComponent implements OnInit {
   ngOnInit(): void {
   }
   createSong(){
-    // arrow function
-    // (listSong, albumId) => {}
     return this.songService.createSong(this.song).subscribe(value => {
       this.song = value;
     })
