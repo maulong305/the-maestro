@@ -26,5 +26,14 @@ public class SongController {
         songService.save(song);
         return new ResponseEntity<>(song, HttpStatus.OK);
     }
+    @ApiOperation(value = "show all song", response = Song.class)
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Song>> listSong(){
+        Iterable<Song> songs = songService.findAll();
+        if (songs == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(songs, HttpStatus.OK);
+    }
 
 }
