@@ -6,7 +6,11 @@ import { AppComponent } from './app.component';
 import { ListSongComponent } from './song/list-song/list-song.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateSongComponent } from './song/create-song/create-song.component';
-
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AppFirebaseModule } from './app-firebase/app-firebase.module';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +23,10 @@ import { CreateSongComponent } from './song/create-song/create-song.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    AppFirebaseModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [],
   bootstrap: [AppComponent]
