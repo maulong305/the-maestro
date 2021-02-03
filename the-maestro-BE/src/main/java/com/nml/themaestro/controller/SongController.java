@@ -23,6 +23,7 @@ public class SongController {
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public ResponseEntity<Song> createSong(@RequestBody Song song){
         song.setCreatedAt(currentTime);
+        song.setNumberOfView(0L);
         songService.save(song);
         return new ResponseEntity<>(song, HttpStatus.OK);
     }
@@ -31,9 +32,19 @@ public class SongController {
     public ResponseEntity<Iterable<Song>> listSong(){
         Iterable<Song> songs = songService.findAll();
         if (songs == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(songs, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "get song by id", response = Song.class)
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public ResponseEntity<Song> getSongById(@PathVariable Long id){
+        Song song = songService.findById(id);
+        if (song == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(song, HttpStatus.OK);
     }
 
 }
