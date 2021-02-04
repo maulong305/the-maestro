@@ -2,9 +2,11 @@ package com.nml.themaestro.config.sercurity;
 
 import com.nml.themaestro.config.JwtAuthenticationFilter;
 import com.nml.themaestro.model.User;
+import com.nml.themaestro.repository.UserDetailRepository;
 import com.nml.themaestro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,6 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import javax.annotation.PostConstruct;
 import java.util.List;
 
+@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userService;
@@ -28,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         List<User> users = (List<User>) userService.findAll();
         if (users.isEmpty()){
             User user = new User();
-            user.setUserName("admin");
+            user.setUsername("admin");
             user.setPassword(passwordEncoder.encode("admin"));
             userService.save(user);
         }
@@ -64,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/**");
         http.httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint());
         http.authorizeRequests()
-                .antMatchers("/**","/login").permitAll()
+                .antMatchers("/","/login", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

@@ -17,7 +17,7 @@ public class UserPrinciple implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userName;
+    private String username;
     private String password;
     private Role role;
     private UserDetail userDetail;
@@ -26,9 +26,9 @@ public class UserPrinciple implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
     }
-    public UserPrinciple(Long id, String userName, String password, UserDetail userDetail, Collection<? extends GrantedAuthority> roles) {
+    public UserPrinciple(Long id, String username, String password, UserDetail userDetail, Collection<? extends GrantedAuthority> roles) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.userDetail = userDetail;
         this.roles = roles;
@@ -39,7 +39,7 @@ public class UserPrinciple implements UserDetails {
         ).collect(Collectors.toList());
         return new UserPrinciple(
                 user.getId(),
-                user.getUserName(),
+                user.getUsername(),
                 user.getPassword(),
                 user.getUserDetail(),
                 authorities
@@ -52,7 +52,7 @@ public class UserPrinciple implements UserDetails {
         this.id = id;
     }
     public void setUsername(String username) {
-        this.userName = userName;
+        this.username = username;
     }
     public String getPassword() {
         return password;
@@ -60,7 +60,7 @@ public class UserPrinciple implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     public void setPassword(String password) {

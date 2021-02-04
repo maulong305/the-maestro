@@ -2,7 +2,7 @@ package com.nml.themaestro.controller;
 
 import com.nml.themaestro.model.*;
 import com.nml.themaestro.service.JwtService;
-import com.nml.themaestro.service.UserDetailService;
+import com.nml.themaestro.service.UserDetailServiceImpl;
 import com.nml.themaestro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,15 +28,14 @@ public class AuthController {
     @Autowired
     private JwtService jwtService;
     @Autowired
-    UserDetailService userDetailService;
+    UserDetailServiceImpl userDetailServiceImpl;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> login(@RequestBody User user){
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword())
-        );
+                new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt =jwtService.generateAccessToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -54,19 +53,19 @@ public class AuthController {
             Set<Role> roleSet = new HashSet<>();
             roleSet.add(new Role(1L,"ROLE_USER"));
             user.setRoles(roleSet);
-            user.setUserName(customer.getUserName());
+            user.setUsername(customer.getUserName());
             user.setPassword(passwordEncoder.encode(customer.getPassword()));
             userDetail.setAddress(customer.getAddress());
             userDetail.setEmail(customer.getEmail());
             userDetail.setName(customer.getName());
             userDetail.setPhoneNumber(customer.getPhoneNumber());
-            userDetailService.save(userDetail);
+            userDetailServiceImpl.save(userDetail);
             userService.save(user);
             User user1 = userService.findByUserName(customer.getUserName());
             userDetail.setUser(user1);
             userDetail.setAvatar("https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png");
-            userDetailService.save(userDetail);
-            UserDetail userDetail1 = userDetailService.getUserDetailByUser(user1);
+            userDetailServiceImpl.save(userDetail);
+            UserDetail userDetail1 = userDetailServiceImpl.getUserDetailByUser(user1);
             user1.setUserDetail(userDetail1);
             userService.save(user1);
         }
