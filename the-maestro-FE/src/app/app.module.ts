@@ -11,11 +11,21 @@ import { environment } from 'src/environments/environment';
 import { AppFirebaseModule } from './app-firebase/app-firebase.module';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { PlaySongComponent } from './song/play-song/play-song.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
     CreateSongComponent,
-    ListSongComponent
+    ListSongComponent,
+    PlaySongComponent,
+    RegisterComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +37,9 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule,
+    NgxAudioPlayerModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

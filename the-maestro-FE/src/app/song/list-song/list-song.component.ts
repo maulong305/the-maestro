@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Track } from 'ngx-audio-player';
 import { Song } from 'src/app/model/song';
 import { SongService } from 'src/app/service/song.service';
 
@@ -10,6 +11,7 @@ import { SongService } from 'src/app/service/song.service';
 })
 export class ListSongComponent implements OnInit {
   listSong: Song[] = [];
+
 
   constructor(private songService: SongService, private router: Router) { }
 

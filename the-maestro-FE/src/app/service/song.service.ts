@@ -18,4 +18,7 @@ export class SongService {
   listSong(): Observable<Song[]>{
     return this.httpClient.get<Song[]>(API_URL +`/songs/`)
   }
+  getSongById(id: number): Observable<Song>{
+    return this.httpClient.get<Song>(API_URL + `/songs/${id}`)
+  }
 }
