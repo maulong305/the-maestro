@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JwtInterceptor } from './help/jwt-interceptor';
 import { ErrorInterceptor } from './help/error-interceptor';
+import { HomePageComponent } from './home-page/home-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { ErrorInterceptor } from './help/error-interceptor';
     PlaySongComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
