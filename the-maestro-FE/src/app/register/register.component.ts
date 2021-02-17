@@ -4,8 +4,6 @@ import { Customer } from '../model/customer';
 import { User } from '../model/user';
 import { UserDetailService } from '../service/user-detail.service';
 
-declare var $: any;
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -27,6 +25,9 @@ export class RegisterComponent implements OnInit {
   constructor(private userDetailService: UserDetailService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userDetailService.getAllUser().subscribe(listUser =>{
+      this.listUser = listUser;
+  })
   }
 
   register() {
