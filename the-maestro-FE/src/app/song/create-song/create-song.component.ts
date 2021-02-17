@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Song } from 'src/app/model/song';
 import { SongService } from 'src/app/service/song.service';
 import {finalize} from 'rxjs/operators';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-create-song',
@@ -15,17 +16,27 @@ export class CreateSongComponent implements OnInit {
   selectedImage: any = null;
   selectedFile: any = null;
   createSuccess = false;
+  username: any;
+  currentUser: any;
 
   constructor(private activatedRoute: ActivatedRoute,
      private songService: SongService, 
      private router: Router,
-     private readonly storage: AngularFireStorage,) { }
+     private authService: AuthService,
+     private readonly storage: AngularFireStorage,) {
+      this.authService.currentUserSubject.subscribe(value => {
+        this.currentUser = value;
+      })
+      }
 
   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe(async paramMap => {
+      this.username = paramMap.get('username');
+      console.log(this.username)
+    })
   }
   createSong(){
-    console.log(this.song.file)
-    return this.songService.createSong(this.song).subscribe(value => {
+    return this.songService.createSong(this.song, this.currentUser.username).subscribe(value => {
       this.song = value;
     })
   }

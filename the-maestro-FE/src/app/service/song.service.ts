@@ -12,10 +12,13 @@ const API_URL = `${environment.apiUrl}`;
 export class SongService {
 
   constructor(private httpClient: HttpClient) { }
-  createSong(song: Song): Observable<Song>{
-    return this.httpClient.post<Song>(API_URL + `/songs/create`, song)
+  createSong(song: Song, username: string): Observable<Song>{
+    return this.httpClient.post<Song>(API_URL + `/songs/create/${username}`, song)
   }
   listSong(): Observable<Song[]>{
     return this.httpClient.get<Song[]>(API_URL +`/songs/`)
+  }
+  getSongById(id: number): Observable<Song>{
+    return this.httpClient.get<Song>(API_URL + `/songs/${id}`)
   }
 }
