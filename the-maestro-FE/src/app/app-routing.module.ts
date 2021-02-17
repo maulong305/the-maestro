@@ -8,10 +8,10 @@ import { PlaySongComponent } from './song/play-song/play-song.component';
 
 const routes: Routes = [
   {
-    path: 'songs/create', component: CreateSongComponent
+    path: 'songs/create/:username', component: CreateSongComponent
   },
   {
-    path: 'songs', component: ListSongComponent
+    path: 'songs/:username', component: ListSongComponent
   },
   {
     path: 'songs/:id', component: PlaySongComponent

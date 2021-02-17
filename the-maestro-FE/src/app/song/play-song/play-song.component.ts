@@ -24,6 +24,7 @@ export class PlaySongComponent implements OnInit {
   constructor(private songService: SongService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe ( param => {
       this.id = param.get("id");
+      this.getTrack(this.id)
     })
    }
 
