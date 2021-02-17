@@ -20,6 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { JwtInterceptor } from './help/jwt-interceptor';
 import { ErrorInterceptor } from './help/error-interceptor';
 import { HomePageComponent } from './home-page/home-page.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { HomePageComponent } from './home-page/home-page.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    HomePageComponent
+    HomePageComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

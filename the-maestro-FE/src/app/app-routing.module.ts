@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'songs/create/:username', component: CreateSongComponent
   },
   {
-    path: 'songs/:username', component: ListSongComponent
+    path: 'songs', component: ListSongComponent
   },
   {
     path: 'songs/:id', component: PlaySongComponent

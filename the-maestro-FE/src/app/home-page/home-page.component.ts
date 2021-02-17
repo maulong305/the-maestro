@@ -15,13 +15,13 @@ export class HomePageComponent implements OnInit {
   showSongLike = true;
   showPlaylistLike = false;
   listPlaylistNew : Playlist[] = [];
-  listSongMostView10 : Song[] = [];
+  listSongs: Song[] = [];
   constructor(private playlistService: PlaylistService, private songService: SongService) {
   }
 
   ngOnInit(): void {
-    // this.playlistService.latestPlaylist().subscribe( async listPlaylistNew => {
-      // this.listPlaylistNew = listPlaylistNew;
+    this.songService.listSong().subscribe( async listSongs => {
+      this.listSongs = listSongs;
        $(document).ready(() => {
         $('.slider-for').slick({
           slidesToShow: 1,
@@ -41,7 +41,7 @@ export class HomePageComponent implements OnInit {
     // })
     // this.songService.getList10SongInTopView().subscribe( list10Song => {
     //   this.listSongMostView10 = list10Song;
-    // })
+    })
 
   }
   songLike(){
