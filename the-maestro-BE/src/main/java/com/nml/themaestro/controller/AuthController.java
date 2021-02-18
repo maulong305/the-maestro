@@ -76,4 +76,29 @@ public class AuthController {
     public ResponseEntity<Iterable<User>> getAll(){
         return new ResponseEntity<>(userService.findAll(),HttpStatus.OK);
     }
+
+    @GetMapping("/profile/{username}")
+    public ResponseEntity<UserDetail> getProfile(@PathVariable String username){
+        User user = userService.findByUserName(username);
+        UserDetail userDetail = userDetailServiceImpl.getUserDetailByUser(user);
+        return new ResponseEntity<>(userDetail, HttpStatus.OK);
+    }
+
+    @PutMapping("/profile/{username}")
+    public ResponseEntity<UserDetail> editProfile(@PathVariable String username, @RequestBody Customer customer){
+        User user = userService.findByUserName(username);
+        UserDetail userDetailOld = userDetailServiceImpl.getUserDetailByUser(user);
+        userDetailOld.setName(customer.getName());
+        userDetailOld.setPhoneNumber(customer.getPhoneNumber());
+        userDetailOld.setEmail(customer.getEmail());
+        userDetailOld.setAddress(customer.getAddress());
+        userDetailOld.setAvatar(customer.getAvatar());
+        if (customer.getPassword() != null){
+            user.setPassword(passwordEncoder.encode(customer.getPassword()));
+            userService.save(user);
+        }else {
+            userDetailServiceImpl.save(userDetailOld);
+        }
+        return new ResponseEntity<>(userDetailOld, HttpStatus.OK);
+    }
 }
