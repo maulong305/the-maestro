@@ -1,26 +1,31 @@
 <form style="width: 50%; margin: 0 auto;" (ngSubmit)="submit()" >
     <div class="form-group">
-      <label for="name">name</label>
+      <label for="name">Name</label>
       <input type="text" class="form-control" id="name" required [(ngModel)]="song.name" name="name">
     </div>
 
     <div class="form-group">
-        <label for="name">file</label>
+        <label for="name">File</label>
         <input type="file" class="form-control" id="file" required [(ngModel)]="song.file" name="file" (change)="showPreviewFile($event)">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Singer</label>
+      <input type="text" class="form-control" id="author" required [(ngModel)]="song.author" name="author">
     </div>
   
     <div class="form-group">
-      <label for="name">author</label>
+      <label for="name">Author</label>
       <input type="text" class="form-control" id="author" required [(ngModel)]="song.author" name="author">
     </div>
 
     <div class="form-group">
-        <label for="name">avatar</label>
+        <label for="name">Avatar</label>
         <input type="file" class="form-control" id="avatar" required [(ngModel)]="song.avatar" name="avatar" (change)="showPreview($event)">
       </div>
 
       <div class="form-group">
-        <label for="name">lyric</label>
+        <label for="name">Lyric</label>
         <input type="text" class="form-control" id="lyric" required [(ngModel)]="song.lyric" name="lyric">
       </div>
    

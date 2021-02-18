@@ -6,6 +6,7 @@ export interface Song{
     file?: string;
     createdAt?: any;
     numberOfView?: number;
+    singer?: string;
     author?: string;
     avatar?: string;
     lyric?: string;

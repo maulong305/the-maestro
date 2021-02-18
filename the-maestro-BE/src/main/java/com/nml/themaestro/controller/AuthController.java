@@ -39,7 +39,8 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt =jwtService.generateAccessToken(authentication);
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
+        User user1 = userService.findByUserName(user.getUsername());
+        return ResponseEntity.ok(new JwtResponse(user1.getId(), jwt, userDetails.getUsername(), userDetails.getAuthorities()));
     }
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public  ResponseEntity<String> getProfile(){
@@ -70,5 +71,9 @@ public class AuthController {
             userService.save(user1);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @GetMapping("/register")
+    public ResponseEntity<Iterable<User>> getAll(){
+        return new ResponseEntity<>(userService.findAll(),HttpStatus.OK);
     }
 }

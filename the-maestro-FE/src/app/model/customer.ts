@@ -5,7 +5,7 @@ export interface Customer{
     name?: string;
     address?: string;
     email?: string;
-    phonNumber?: string;
+    phoneNumber?: string;
     avatar?: string;
   }
   

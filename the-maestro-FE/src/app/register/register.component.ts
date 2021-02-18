@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
         if (this.validateUserName) {
           if ((this.customer.password + '').length > 5 && this.customer.password != undefined) {
             this.validatePassword = true;
-            if (((this.customer.phonNumber + '').length > 8 && (this.customer.phonNumber + '').length < 12) && this.customer.phonNumber != undefined) {
+            if (((this.customer.phoneNumber + '').length > 8 && (this.customer.phoneNumber + '').length < 12) && this.customer.phoneNumber != undefined) {
               this.validatePhoneNumber = true
               this.userDetailService.createNewCustomer(this.customer)
                 .subscribe(() => {
