@@ -1,1 +1,212 @@
-<p>profile works!</p>
+<app-header></app-header>
+<div class="container" *ngIf="currentUser">
+  <header class="jumbotron">
+    <div class="container emp-profile" >
+      <form method="post">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="profile-img">
+
+              <img [src] = "imgSrc" style="width: 150px; height: auto" alt="Avatar" (click)="fileUploader.click()" >
+
+              <div class="file btn btn-lg btn-primary">
+                Change Avatar
+                <input type="file" formControlName="avatar" #fileUploader
+                       (change)="showPreview($event)">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="profile-head">
+              <h2 style="color: blue">
+                <strong>Account Management</strong>
+              </h2>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Infomation</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Song</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Playlist</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div style="margin-left: 320px" class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div *ngIf="editProfile">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Full Name</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.name}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Address</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.address}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Email</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.email}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>PhoneNumber</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.phoneNumber}}</p>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 50px">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="showEditForm()" class="profile-edit-btn" name="btnAddMore" value="Change Infomation"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="changePassword()" class="profile-edit-btn" name="btnAddMore" value="Change Password"/>
+                      </div>
+                    </div>
+                  </div>
+                  <form style="margin-top: 40px" *ngIf="!changePass" (ngSubmit)="changePasswordSuccess()">
+                    <div class="row mt-2" >
+                      <div class="col-md-6">
+                        <label>Enter Current Password</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" name="password" [(ngModel)]="oldPass">
+                      </div>
+                      <div *ngIf="!oldPassMessage">
+                        <p style="color: red">Current password is incorrect, please try again</p>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6">
+                        <label>Enter New Password</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" name="password" [(ngModel)]="newPass">
+                      </div>
+                    </div>
+                    <div class="row mt-2" >
+                      <div class="col-md-6">
+                        <label>Re-enter the password</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" name="password" [(ngModel)]="checkPass">
+                      </div>
+                      <div *ngIf="!checkPassMessage">
+                        <p style="color: red">New password does not match or less than 6 characters, please try again</p>
+                      </div>
+                      <div *ngIf="!changePassSuccess">
+                        <p style="color: red">Password changed successfully</p>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px">
+                      <div class="col-md-4">
+                        <div class="row">
+                          <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Confirm password change"/>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+                <div *ngIf="!editProfile">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Full Name</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" [(ngModel)]="userDetail.name" name="name">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Address</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" [(ngModel)]="userDetail.address" name="address">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Email</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" [(ngModel)]="userDetail.email" name="email">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>PhoneNumber</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text"  [(ngModel)]="userDetail.phoneNumber" name="phoneNumber">
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 50px">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="editSuccess()" class="profile-edit-btn" name="btnAddMore" value="Confirm change"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="cancelEdit()" class="profile-edit-btn" name="btnAddMore" value="Cancel"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row" style="margin-bottom: 20px">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="listSong()" class="profile-edit-btn" name="btnAddMore">List Songs</button>
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="addSong()" class="profile-edit-btn" name="btnAddMore">Add new Song</button>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row" style="margin-bottom: 20px">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="listPlayList()" class="profile-edit-btn" name="btnAddMore">List playlists</button>
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="createPlayList()" class="profile-edit-btn" name="btnAddMore">Create playlist</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+
+
+<app-footer></app-footer>
