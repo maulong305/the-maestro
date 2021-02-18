@@ -32,6 +32,6 @@ public class UserDetailServiceImpl implements UserDetailService{
 
     @Override
     public UserDetail getUserDetailByUser(User user) {
-        return null;
+        return userDetailRepository.getUserDetailByUser(user);
     }
 }

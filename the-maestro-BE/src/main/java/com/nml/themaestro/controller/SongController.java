@@ -1,7 +1,9 @@
 package com.nml.themaestro.controller;
 
 import com.nml.themaestro.model.Song;
+import com.nml.themaestro.model.User;
 import com.nml.themaestro.service.SongService;
+import com.nml.themaestro.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +19,16 @@ import java.util.Date;
 public class SongController {
     @Autowired
     SongService songService;
+    @Autowired
+    UserService userService;
 
     Date currentTime = Calendar.getInstance().getTime();
     @ApiOperation(value = "create song", response = Song.class)
-    @RequestMapping(value = "create", method = RequestMethod.POST)
-    public ResponseEntity<Song> createSong(@RequestBody Song song){
+    @RequestMapping(value = "create/{username}", method = RequestMethod.POST)
+    public ResponseEntity<Song> createSong(@RequestBody Song song, @PathVariable String username){
         song.setCreatedAt(currentTime);
         song.setNumberOfView(0L);
+        User user = userService.findByUserName(username);
         songService.save(song);
         return new ResponseEntity<>(song, HttpStatus.OK);
     }

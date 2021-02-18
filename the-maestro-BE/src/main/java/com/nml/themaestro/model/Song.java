@@ -16,6 +16,7 @@ public class Song {
     private String file;
     private Date createdAt;
     private Long numberOfView;
+    private String singer;
     private String author;
     private String avatar;
     private String lyric;
