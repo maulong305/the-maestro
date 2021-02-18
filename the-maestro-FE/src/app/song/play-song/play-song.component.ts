@@ -13,6 +13,7 @@ export class PlaySongComponent implements OnInit {
 
   id: any;
   song: Song = {};
+  showFullLyric = true;
 
   singleTrack: Track[] = [
     {
@@ -21,10 +22,12 @@ export class PlaySongComponent implements OnInit {
     }
   ];
 
-  constructor(private songService: SongService, private activatedRoute: ActivatedRoute) {
+  constructor(private songService: SongService, 
+              private activatedRoute: ActivatedRoute,) {
     this.activatedRoute.paramMap.subscribe ( param => {
       this.id = param.get("id");
       this.getTrack(this.id)
+      this.song.id = this.id
     })
    }
 
@@ -33,9 +36,13 @@ export class PlaySongComponent implements OnInit {
   }
   getTrack(id: number){
     this.songService.getSongById(id).subscribe(value => {
+      this.song = value;
       this.singleTrack[0].title = value.name + '';
       this.singleTrack[0].link = value.file + '';
     })
+  }
+  collapseLyric(){
+    this.showFullLyric = !this.showFullLyric;
   }
 
 }

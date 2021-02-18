@@ -1,22 +1,65 @@
-
-<table width="750px">
-    <tr>
-      <td width="200px" style="padding: 0"><img width="200px" height="200px" [src]="song.avatar"></td>
-      <td style="background-image: url(https://anhdep.tv/attachments/dd5d8b8e6f192fd55d554cbc2edddb4f-jpeg.9863/);
-               background-repeat: no-repeat">
-        <span style="font-size: 20px;color: black">
-            {{song.name}}
-          <br/>
-          Trình bày: {{song.author}}
-        </span>
-      </td>
+<app-header></app-header>
+<div class="container center">
+  <div class="item item-1">
+    <table width="750px">
+      <tr>
+        <td width="70%" style="padding-bottom: 10px; font-size: 20px">{{song.name}} - {{song.author}}</td>
     </tr>
-  </table>
-  <ngx-audio-player [autoPlay]="true"
-                            [displayPlaylist]="false"
-                            [displayTitle]="false"
-                            [displayVolumeControls]="true"
-                            [disablePositionSlider]="false"
-                            [displayDuration]="true" [expanded]="true"
+    </table>
+    <table width="750px">
+      <tr>
+        <td width="200px" style="padding: 0"><img width="200px" height="200px" [src]="song.avatar"></td>
+        <td style="background-image: url(https://anhdep.tv/attachments/dd5d8b8e6f192fd55d554cbc2edddb4f-jpeg.9863/);
+               background-repeat: no-repeat">
+          <span style="font-size: 20px;color: black">
+            {{song.name}}
+            <br>
+            Singer: {{song.singer}}
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <ngx-audio-player [autoPlay]="false" 
+                            [displayPlaylist]="false" 
+                            [displayTitle]="false" 
+                            [displayVolumeControls]="true" 
+                            [disablePositionSlider]="false" 
+                            [displayDuration]="true" 
+                            [expanded]="true" 
                             [playlist]="singleTrack">
-</ngx-audio-player>
+          </ngx-audio-player>
+        </td>
+      </tr>
+    </table>
+    <table style="margin: 10px 0 10px 0" width="750px">
+      <tr>
+        <td width="40%"><span style="font-size: 15px">Played by</span></td>
+      </tr>
+      <tr>
+        <td><span style="font-size: 18px;color: blueviolet"><strong>MAESTRO ENTERTAINMENT</strong></span></td>
+      </tr>
+    </table>
+    <table class="table table-bordered">
+      <tr>
+        <td>
+          <strong style="font-size: 20px">Lyric: {{song.name}}</strong>
+          <br/>
+          <span style="font-size: 17px;color: gray">Author: {{song.author}}</span>
+          <br>
+          <span style="font-size: 17px;color: gray">Author: {{song.singer}}</span> 
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <pre class="lyric" *ngIf="showFullLyric" style="display: block;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
+          <pre *ngIf="!showFullLyric" style="display: inline;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
+          <br *ngIf="!showFullLyric">
+          <span><button *ngIf="showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Mở rộng</button></span>
+          <button *ngIf="!showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Thu gọn</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<app-footer></app-footer>
