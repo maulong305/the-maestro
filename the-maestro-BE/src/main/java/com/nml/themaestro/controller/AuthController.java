@@ -64,7 +64,7 @@ public class AuthController {
             userService.save(user);
             User user1 = userService.findByUserName(customer.getUserName());
             userDetail.setUser(user1);
-            userDetail.setAvatar("https://cdn3.iconfinder.com/data/icons/avatars-round-flat/33/avat-01-512.png");
+            userDetail.setAvatar("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjalwoxNi-vVFisQld-OrTjev4b6RcEo19cg&usqp=CAU");
             userDetailServiceImpl.save(userDetail);
             UserDetail userDetail1 = userDetailServiceImpl.getUserDetailByUser(user1);
             user1.setUserDetail(userDetail1);
