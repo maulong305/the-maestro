@@ -130,19 +130,10 @@ export class ProfileComponent implements OnInit {
     }
   }
   addSong(){
-    this.router.navigate(["/createsong/" + this.currentUser.username]);
-  }
-  addSinger(){
-    this.router.navigate(["/createsinger/" + this.currentUser.username]);
+    this.router.navigate(["/songs/create/" + this.currentUser.username]);
   }
   listSong(){
-    this.router.navigate(["/listsong/" + this.currentUser.username]);
+    this.router.navigate(["/songs/" + this.currentUser.username]);
   }
-  createPlayList(){
-    this.router.navigate(["/create-playlist/" + this.currentUser.username]);
-  }
-  listPlayList(){
-    this.router.navigate(["/list-playlist/" + this.currentUser.username]);
-  }
-
+  
 }
