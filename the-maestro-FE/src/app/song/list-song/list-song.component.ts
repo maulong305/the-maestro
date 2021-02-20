@@ -28,5 +28,13 @@ export class ListSongComponent implements OnInit {
   addSong(){
     this.router.navigate(['/songs/create/' + this.currentUser.username])
   }
+  deleteSong(id: number){
+    if (confirm("Are you sure?")){
+           this.songService.deleteSong(id,this.currentUser.username).subscribe( async song => {
+          await this.router.navigate(['songs/create/' + this.currentUser.username])
+          await this.router.navigate(['/songs/listSong/' + this.currentUser.username])
+        })  
+    }
+  }
 
 }
