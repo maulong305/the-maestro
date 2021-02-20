@@ -29,6 +29,7 @@ public class SongController {
         song.setCreatedAt(currentTime);
         song.setNumberOfView(0L);
         User user = userService.findByUserName(username);
+        song.setUser(user);
         songService.save(song);
         return new ResponseEntity<>(song, HttpStatus.OK);
     }
@@ -50,6 +51,26 @@ public class SongController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(song, HttpStatus.OK);
+    }
+    @PutMapping("edit/{username}/{id}")
+    public ResponseEntity<Song> editSong(@RequestBody Song song,@PathVariable Long id, @PathVariable String username){
+        song = songService.findById(id);
+        if (song == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        songService.save(song);
+        return new ResponseEntity<>(song, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "show all song by user", response = Song.class)
+    @RequestMapping(value = "listSong/{username}", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Song>> listSongByUser(@PathVariable String username){
+        User user = userService.findByUserName(username);
+        Iterable<Song> songs = songService.findAllByUserId(user.getId());
+        if (songs == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 
 }
