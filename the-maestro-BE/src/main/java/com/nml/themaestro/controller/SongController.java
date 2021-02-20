@@ -54,7 +54,6 @@ public class SongController {
     }
     @PutMapping("edit/{username}/{id}")
     public ResponseEntity<Song> editSong(@RequestBody Song song,@PathVariable Long id, @PathVariable String username){
-        song = songService.findById(id);
         if (song == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
