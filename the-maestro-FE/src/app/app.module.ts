@@ -22,6 +22,7 @@ import { ErrorInterceptor } from './help/error-interceptor';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { EditSongComponent } from './song/edit-song/edit-song.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { FooterComponent } from './footer/footer.component';
     ProfileComponent,
     HomePageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditSongComponent
   ],
   imports: [
     BrowserModule,

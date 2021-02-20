@@ -1,0 +1,98 @@
+<app-header></app-header>
+<div class="container">
+  <header class="jumbotron">
+    <div class="container emp-profile" >
+      <form method="post">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-head">
+              <h2 style="color: blue">
+                <strong>UPDATE SONG</strong>
+              </h2>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div style="margin-left: 50px">
+
+                <form (ngSubmit)="editSong()">
+                  <div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Song name</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <input type="text" [(ngModel)]="song.name" name="name">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 25px">
+                        <div class="col-md-2">
+                          <label>Singer</label>
+                        </div>
+                        <div class="col-md-10">
+                          <label>
+                            <input type="text" [(ngModel)]="song.singer" name="singer">
+                          </label>
+                        </div>
+                      </div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Author</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <input type="text" [(ngModel)]="song.author" name="author">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2" style="margin-right: 30px">
+                        <label>Avatar</label>
+                      </div>
+                      <tr>
+                        <td><label for="avatar"></label></td>
+                        <td><input type="file" [(ngModel)]="song.avatar" name="avatar" id="avatar" (change)="showPreview($event)" #fileUploader></td>
+                        <img [src] = "song.avatar" style="width: 150px; height: auto" alt="Avatar" (click)="fileUploader.click()" >
+                      </tr>
+                    </div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Lyric</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <textarea cols="75" rows="20"  [(ngModel)]="song.lyric" name="lyric"></textarea>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p style="color: rgb(17, 221, 61)" *ngIf="editSuccess">Update successfull</p>
+                    </div>
+                    <div class="row" style="margin-top: 50px">
+                      <div class="col-md-3">
+                        <div class="row">
+                          <button type="submit" class="profile-edit-btn" name="btnAddMore">Submit</button>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="row">
+                          <button type="submit" (click)="cancel()" class="profile-edit-btn" name="btnAddMore">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+
+
+<app-footer></app-footer>
