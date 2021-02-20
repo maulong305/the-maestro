@@ -23,8 +23,7 @@
                 <td>{{song.author}}</td>
                 <td>{{song.singer}}</td>
                 <td><img style="height: 100px; width: 100px;" src="{{song.avatar}}"></td>
-                <td> <a [routerLink]="['/songs/edit',currentUser.username,song.id]">Edit</a></td >
-                  <td> <button type="button" class="btn btn-secondary" >Delete</button></td>
+                 <td> <a [routerLink]="['/songs/edit',currentUser.username,song.id]">Edit</a></td >
             </tr>
         </tbody>
       </table>
