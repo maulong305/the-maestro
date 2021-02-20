@@ -9,4 +9,5 @@ public interface SongService {
     void delete(Long id);
 
     Iterable<Song> findAllByUserId(Long idUser);
+    Iterable<Song> latest();
 }
