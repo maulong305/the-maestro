@@ -14,9 +14,8 @@ export class HomePageComponent implements OnInit {
 
   showSongLike = true;
   showPlaylistLike = false;
-  listPlaylistNew : Playlist[] = [];
   listSongs: Song[] = [];
-  constructor(private playlistService: PlaylistService, private songService: SongService) {
+  constructor(private songService: SongService) {
   }
 
   ngOnInit(): void {

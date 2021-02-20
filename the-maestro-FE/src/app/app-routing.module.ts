@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateSongComponent } from './song/create-song/create-song.component';
+import { EditSongComponent } from './song/edit-song/edit-song.component';
 import { ListSongComponent } from './song/list-song/list-song.component';
 import { PlaySongComponent } from './song/play-song/play-song.component';
 
@@ -14,11 +15,11 @@ const routes: Routes = [
     path: 'songs/create/:username', component: CreateSongComponent
   },
   {
-    path: 'songs', component: ListSongComponent
+    path: 'songs/:username', component: ListSongComponent
   },
   {
-    path: 'songs/:id', component: PlaySongComponent
-  },
+    path: 'playsongs/:id', component: PlaySongComponent
+  },  
   {
     path: 'login', component: LoginComponent
   },
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'profile/:username',
     component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'songs/edit/:username/:id',
+    component: EditSongComponent,
     canActivate: [AuthGuard]
   },
 ];

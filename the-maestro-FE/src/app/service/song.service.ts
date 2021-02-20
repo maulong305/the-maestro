@@ -21,4 +21,11 @@ export class SongService {
   getSongById(id: number): Observable<Song>{
     return this.httpClient.get<Song>(API_URL + `/songs/${id}`)
   }
+  editSong(username : String, id : number, song : Song): Observable<Song>{
+    return this.httpClient.put<Song>(API_URL + `/songs/edit/${username}/${id}`,song);
+  }
+  getAllSong(username : String): Observable<Song[]>{
+    return this.httpClient.get<Song[]>(API_URL + `/songs/listSong/${username}`)
+  }
+
 }
