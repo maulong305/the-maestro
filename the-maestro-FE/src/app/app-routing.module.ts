@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateSongComponent } from './song/create-song/create-song.component';
 import { EditSongComponent } from './song/edit-song/edit-song.component';
+import { LatestSongsComponent } from './song/latest-songs/latest-songs.component';
 import { ListSongComponent } from './song/list-song/list-song.component';
 import { PlaySongComponent } from './song/play-song/play-song.component';
 
@@ -38,6 +39,10 @@ const routes: Routes = [
     path: 'songs/edit/:username/:id',
     component: EditSongComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'latestSongs',
+    component: LatestSongsComponent,
   },
 ];
 

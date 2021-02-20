@@ -27,4 +27,7 @@ export class SongService {
   getAllSong(username : String): Observable<Song[]>{
     return this.httpClient.get<Song[]>(API_URL + `/songs/listSong/${username}`)
   }
+  getLatest(): Observable<Song[]>{
+    return this.httpClient.get<Song[]>(API_URL + `songs/latestSongs`);
+  }
 }
