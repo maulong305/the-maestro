@@ -15,6 +15,7 @@ export class LatestSongsComponent implements OnInit {
   ngOnInit(): void {
     this.songService.getLatest().subscribe(list => {
       this.latestSongs = list;
+      console.log(this.latestSongs.length)
     })
   }
 

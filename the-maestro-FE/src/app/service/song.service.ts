@@ -28,6 +28,6 @@ export class SongService {
     return this.httpClient.get<Song[]>(API_URL + `/songs/listSong/${username}`)
   }
   getLatest(): Observable<Song[]>{
-    return this.httpClient.get<Song[]>(API_URL + `songs/latestSongs`);
+    return this.httpClient.get<Song[]>(API_URL + `/songs/latestSongs`);
   }
 }
