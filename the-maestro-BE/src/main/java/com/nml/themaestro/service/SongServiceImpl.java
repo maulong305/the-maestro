@@ -34,4 +34,9 @@ public class SongServiceImpl implements SongService{
     public Iterable<Song> findAllByUserId(Long idUser) {
         return songRepository.findAllByUserId(idUser);
     }
+
+    @Override
+    public Iterable<Song> latest() {
+        return songRepository.findAllByCreatedAtOrderByCreatedAt();
+    }
 }

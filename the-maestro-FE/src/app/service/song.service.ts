@@ -27,7 +27,10 @@ export class SongService {
   getAllSong(username : String): Observable<Song[]>{
     return this.httpClient.get<Song[]>(API_URL + `/songs/listSong/${username}`)
   }
-  deleteSong(id : any, username : String): Observable<Song>{
+   deleteSong(id : any, username : String): Observable<Song>{
     return this.httpClient.delete<Song>(API_URL + `/songs/listSong/${username}/${id}`);
+  }
+  getLatest(): Observable<Song[]>{
+    return this.httpClient.get<Song[]>(API_URL + `/songs/latestSongs`);
   }
 }

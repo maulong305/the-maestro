@@ -71,6 +71,7 @@ public class SongController {
         }
         return new ResponseEntity<>(songs, HttpStatus.OK);
     }
+
     @DeleteMapping(value = "listSong/{username}/{id}")
     public ResponseEntity<Void> deleteSong(@PathVariable("id") Long id,@PathVariable("username") String username){
         Song song = songService.findById(id);
@@ -79,6 +80,14 @@ public class SongController {
         }
         songService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping(value = "latestSongs")
+    public ResponseEntity<Iterable<Song>> latestSong() {
+        Iterable<Song> songs = songService.latest();
+        if (songs == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(songs, HttpStatus.OK);
     }
 
 }
