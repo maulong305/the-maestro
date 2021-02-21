@@ -24,6 +24,7 @@
                 <td>{{song.singer}}</td>
                 <td><img style="height: 100px; width: 100px;" src="{{song.avatar}}"></td>
                  <td> <a [routerLink]="['/songs/edit',currentUser.username,song.id]">Edit</a></td >
+                  <td> <button type="button" class="btn btn-secondary" *ngIf="song.id != null" (click)="deleteSong(song.id)">Delete</button></td>
             </tr>
         </tbody>
       </table>
