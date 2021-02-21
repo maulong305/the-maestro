@@ -42,8 +42,6 @@ export class EditSongComponent implements OnInit {
   ngOnInit(): void {
     this.editSuccess = false;
     this.activatedRoute.paramMap.subscribe(async paramMap => {
-      // 1 - check null
-      // 2 - parseInt
       let _id = paramMap.get('id')
       if (_id != null) {
         this.id = parseInt(_id)
