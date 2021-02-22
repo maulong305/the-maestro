@@ -17,7 +17,7 @@
         <tbody>
             <tr *ngFor = "let song of listSong; let i = index">
                 <td>{{song.id}}</td>
-                <td>{{song.name}}</td>
+                <td><a [routerLink]="['/playsong/'+song.id]">{{song.name}}</a></td>
                 <td>{{song.createdAt.substring(0,10)}}</td>
                 <td>{{song.numberOfView}}</td>
                 <td>{{song.author}}</td>

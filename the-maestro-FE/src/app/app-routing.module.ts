@@ -19,7 +19,7 @@ const routes: Routes = [
     path: 'songs/:username', component: ListSongComponent
   },
   {
-    path: 'playsongs/:id', component: PlaySongComponent
+    path: 'playsong/:id', component: PlaySongComponent
   },  
   {
     path: 'login', component: LoginComponent
