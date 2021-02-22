@@ -3,7 +3,9 @@ package com.nml.themaestro.service;
 import com.nml.themaestro.model.Playlist;
 import com.nml.themaestro.repository.PlaylistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PlaylistServiceImpl implements PlaylistService{
     @Autowired
     private PlaylistRepository playlistRepository;
