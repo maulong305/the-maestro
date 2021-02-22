@@ -20,4 +20,9 @@ export class PlaylistService {
   gestLatest(): Observable<Playlist[]> {
     return this.http.get<Playlist[]>(API_URL + `/playlists/latest`);
   }
+  addSongToPlaylist(idSong: number, idPlaylist: number): Observable<Playlist> {
+    // @ts-ignore
+    return this.http.post<Playlist>(API_URL + `/playlists/${idPlaylist}/songs/${idSong}`);
+  }
+  
 }

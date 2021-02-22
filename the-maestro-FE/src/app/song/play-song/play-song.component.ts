@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Track } from 'ngx-audio-player';
+import { Playlist } from 'src/app/model/playlist';
 import { Song } from 'src/app/model/song';
+import { AuthService } from 'src/app/service/auth.service';
+import { PlaylistService } from 'src/app/service/playlist.service';
 import { SongService } from 'src/app/service/song.service';
 
 @Component({
@@ -21,13 +24,21 @@ export class PlaySongComponent implements OnInit {
       title: ''
     }
   ];
-
+  listPlaylist: Playlist[] = [];
+  currentUser: any = {};
+  idPlaylist: number | undefined;
   constructor(private songService: SongService, 
-              private activatedRoute: ActivatedRoute,) {
+              private activatedRoute: ActivatedRoute,
+              private playlistService: PlaylistService,
+              private authService: AuthService) {
     this.activatedRoute.paramMap.subscribe ( param => {
       this.id = param.get("id");
       this.getTrack(this.id)
       this.song.id = this.id
+    });
+    this.authService.currentUserSubject.subscribe(value1 => {
+      this.currentUser = value1;
+      this.getAllPlaylistByUsername(this.currentUser.username);
     })
    }
 
@@ -43,6 +54,21 @@ export class PlaySongComponent implements OnInit {
   }
   collapseLyric(){
     this.showFullLyric = !this.showFullLyric;
+  }
+  addSongToPlaylist(id: number, idPlaylist: number) {
+    this.playlistService.addSongToPlaylist(id, idPlaylist).subscribe(value => {
+      if (value == null) {
+        alert('The song in playlist already');
+      } else {
+        alert('Add songs to playlist successfully');
+        this.getAllPlaylistByUsername(this.currentUser.username);
+      }
+    });
+  }
+  getAllPlaylistByUsername(username: string) {
+    this.playlistService.getAllPlayList(username).subscribe(value => {
+      this.listPlaylist = value;
+    });
   }
 
 }
