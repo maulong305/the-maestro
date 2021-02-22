@@ -1,0 +1,21 @@
+<div style="margin-top: 20px"></div>
+<div class="main" style="width: 82%; height: auto; margin: 0 auto">
+  <div class="card">
+    <div class="card-header">
+      <span class="h4">Lastest Playlists</span>
+    </div>
+    <div class="card-body">
+      <div class="slider slider-for">
+      </div>
+      <div class="slider slider-nav">
+
+        <div *ngFor="let playlist of latestPlaylist">
+          <a>
+            <h3><img src="{{playlist.avatar}}" width="200px" height="200px"></h3>
+            <p style="margin-left: 20px; color: black">{{playlist.name}}</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

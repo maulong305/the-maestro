@@ -17,4 +17,7 @@ export class PlaylistService {
   getAllPlayList(username: String): Observable<Playlist[]> {
     return this.http.get<Playlist[]>(API_URL + `/playlists/list/${username}`);
   }
+  gestLatest(): Observable<Playlist[]> {
+    return this.http.get<Playlist[]>(API_URL + `/playlists/latest`);
+  }
 }

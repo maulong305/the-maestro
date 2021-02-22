@@ -35,4 +35,9 @@ public class PlaylistServiceImpl implements PlaylistService{
         return playlistRepository.findAllByUserUsername(username);
     }
 
+    @Override
+    public Iterable<Playlist> latest() {
+        return playlistRepository.findAllByCreatedAtOrderByCreatedAt();
+    }
+
 }
