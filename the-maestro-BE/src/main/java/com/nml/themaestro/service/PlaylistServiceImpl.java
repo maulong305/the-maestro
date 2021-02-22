@@ -30,4 +30,9 @@ public class PlaylistServiceImpl implements PlaylistService{
         playlistRepository.deleteById(id);
     }
 
+    @Override
+    public Iterable<Playlist> findAllByUserName(String username) {
+        return playlistRepository.findAllByUserUsername(username);
+    }
+
 }

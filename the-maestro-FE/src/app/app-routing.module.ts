@@ -4,6 +4,7 @@ import { AuthGuard } from './help/auth-guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { CreatePlaylistComponent } from './playlist/create-playlist/create-playlist.component';
+import { ListPlaylistsComponent } from './playlist/list-playlists/list-playlists.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateSongComponent } from './song/create-song/create-song.component';
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'playlist/create/:username',
     component: CreatePlaylistComponent
+  },
+  {
+    path: 'playlist/list/:username',
+    component: ListPlaylistsComponent
   },
 ];
 

@@ -1,6 +1,7 @@
 package com.nml.themaestro.controller;
 
 import com.nml.themaestro.model.Playlist;
+import com.nml.themaestro.model.Song;
 import com.nml.themaestro.model.User;
 import com.nml.themaestro.service.PlaylistService;
 import com.nml.themaestro.service.UserService;
@@ -30,5 +31,13 @@ public class PlaylistController {
         playlist.setUser(user);
         playlistService.save(playlist);
         return new ResponseEntity<>(playlist, HttpStatus.CREATED);
+    }
+    @RequestMapping(value = "list/{username}", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Playlist>> listByUser(@PathVariable String username){
+        Iterable<Playlist> playlists = playlistService.findAllByUserName(username);
+        if (playlists == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(playlists, HttpStatus.OK);
     }
 }
