@@ -24,6 +24,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditSongComponent } from './song/edit-song/edit-song.component';
 import { LatestSongsComponent } from './song/latest-songs/latest-songs.component';
+import { CreatePlaylistComponent } from './playlist/create-playlist/create-playlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { LatestSongsComponent } from './song/latest-songs/latest-songs.component
     HeaderComponent,
     FooterComponent,
     EditSongComponent,
-    LatestSongsComponent
+    LatestSongsComponent,
+    CreatePlaylistComponent
   ],
   imports: [
     BrowserModule,
