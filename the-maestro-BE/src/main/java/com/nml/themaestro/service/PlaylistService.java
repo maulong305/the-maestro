@@ -9,4 +9,5 @@ public interface PlaylistService {
     void remove(Long id);
     Iterable<Playlist> findAllByUserName(String username);
     Iterable<Playlist> latest();
+    Playlist addSongToPlaylist(Long idSong, Long idPlaylist);
 }

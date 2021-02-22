@@ -39,6 +39,22 @@
       <tr>
         <td><span style="font-size: 18px;color: blueviolet"><strong>MAESTRO ENTERTAINMENT</strong></span></td>
       </tr>
+      <ng-container *ngIf="currentUser">
+        <td rowspan="2">
+          <div class="dropdown" align="right">
+            <a class="btn btn-light btg-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Add to playlist
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <ng-container *ngFor="let playlist of listPlaylist">
+                <button class="dropdown-item" *ngIf="id != null && playlist.id != null" (click)="addSongToPlaylist(id,playlist.id)">{{playlist.name}}</button>
+              </ng-container>
+            </div>
+          </div>
+        </td>
+      </ng-container>
     </table>
     <table class="table table-bordered">
       <tr>
@@ -55,8 +71,8 @@
           <pre class="lyric" *ngIf="showFullLyric" style="display: block;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
           <pre *ngIf="!showFullLyric" style="display: inline;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
           <br *ngIf="!showFullLyric">
-          <span><button *ngIf="showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Mở rộng</button></span>
-          <button *ngIf="!showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Thu gọn</button>
+          <span><button *ngIf="showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">See more</button></span>
+          <button *ngIf="!showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Collapse</button>
         </td>
       </tr>
     </table>
