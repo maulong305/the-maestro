@@ -48,4 +48,8 @@ public class PlaylistController {
         }
         return new ResponseEntity<>(playlists, HttpStatus.OK);
     }
+    @PostMapping("/{idPlaylist}/songs/{idSong}")
+    public ResponseEntity<Playlist> addSongToPlaylist(@PathVariable("idPlaylist") Long idPlaylist, @PathVariable("idSong") Long idSong) {
+        return new ResponseEntity<>(playlistService.addSongToPlaylist(idSong, idPlaylist), HttpStatus.OK);
+    }
 }
