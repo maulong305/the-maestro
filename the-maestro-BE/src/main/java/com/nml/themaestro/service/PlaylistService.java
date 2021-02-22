@@ -7,4 +7,5 @@ public interface PlaylistService {
     Playlist save(Playlist playlist);
     Playlist findById(Long id);
     void remove(Long id);
+    Iterable<Playlist> findAllByUserName(String username);
 }
