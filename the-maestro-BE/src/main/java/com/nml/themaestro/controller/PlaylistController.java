@@ -40,4 +40,12 @@ public class PlaylistController {
         }
         return new ResponseEntity<>(playlists, HttpStatus.OK);
     }
+    @RequestMapping(value = "latest", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Playlist>> latestPlaylists(){
+        Iterable<Playlist> playlists = playlistService.latest();
+        if (playlists == null){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(playlists, HttpStatus.OK);
+    }
 }
