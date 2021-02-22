@@ -1,0 +1,19 @@
+<app-header></app-header>
+<form style="width: 50%; margin: 0 auto;" (ngSubmit)="submit()" >
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="playlist.name" name="name">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Avatar</label>
+        <input type="file" class="form-control" id="avatar" required [(ngModel)]="playlist.avatar" name="avatar" (change)="showPreview($event)">
+      </div>
+
+    <button type="submit" class="btn btn-success" >Submit</button>
+
+    <div>
+      <p style="color: rgb(60, 255, 0)" *ngIf="createSuccess">created successfull</p>
+    </div>
+  </form>
+  <app-footer></app-footer>
