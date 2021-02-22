@@ -32,7 +32,7 @@ public class PlaylistServiceImpl implements PlaylistService{
 
     @Override
     public Iterable<Playlist> findAllByUserName(String username) {
-        return null;
+        return playlistRepository.findAllByUserUsername(username);
     }
 
 }

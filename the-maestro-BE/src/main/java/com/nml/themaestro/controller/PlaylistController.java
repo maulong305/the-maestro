@@ -34,7 +34,6 @@ public class PlaylistController {
     }
     @RequestMapping(value = "list/{username}", method = RequestMethod.GET)
     public ResponseEntity<Iterable<Playlist>> listByUser(@PathVariable String username){
-        User user = userService.findByUserName(username);
         Iterable<Playlist> playlists = playlistService.findAllByUserName(username);
         if (playlists == null){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
