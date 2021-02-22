@@ -2,6 +2,7 @@ package com.nml.themaestro.controller;
 
 import com.nml.themaestro.model.Playlist;
 import com.nml.themaestro.model.Song;
+import com.nml.themaestro.model.Track;
 import com.nml.themaestro.model.User;
 import com.nml.themaestro.service.PlaylistService;
 import com.nml.themaestro.service.UserService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -51,5 +53,13 @@ public class PlaylistController {
     @PostMapping("/{idPlaylist}/songs/{idSong}")
     public ResponseEntity<Playlist> addSongToPlaylist(@PathVariable("idPlaylist") Long idPlaylist, @PathVariable("idSong") Long idSong) {
         return new ResponseEntity<>(playlistService.addSongToPlaylist(idSong, idPlaylist), HttpStatus.OK);
+    }
+    @GetMapping("/play/{id}")
+    public ResponseEntity<List<Track>> playPlaylist(@PathVariable Long id){
+        List<Track> tracks = playlistService.getTrackPlaylistById(id);
+        if (tracks.size() == 0){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(tracks,HttpStatus.OK);
     }
 }
