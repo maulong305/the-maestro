@@ -14,4 +14,7 @@ export class PlaylistService {
   create(playlist: Playlist, username: String): Observable<Playlist> {
     return this.http.post<Playlist>(API_URL + `/playlists/create/${username}`, playlist);
   }
+  getAllPlayList(username: String): Observable<Playlist[]> {
+    return this.http.get<Playlist[]>(API_URL + `/playlists/list/${username}`);
+  }
 }
