@@ -1,28 +1,27 @@
 <app-header></app-header>
 <div style="margin-top: 50px"></div>
 <div class="row">
-  <div class="col-md-7" style="margin-left:70px">
-    <table width="100%" style="margin-bottom: 10px">
-      <tr>
-        <td width="70%"><span style="font-size: 30px">{{playlist.name}}</span></td>
-      </tr>
-    </table>
-    <table>
-      <tr>
-        <td width="35%" style="padding: 0"><img [src]="playlist.avatar"></td>
-        <td
-          style="background-image: url(https://anhdep.tv/attachments/dd5d8b8e6f192fd55d554cbc2edddb4f-jpeg.9863/);
+    <div class="col-md-7" style="margin-left:70px">
+        <table width="100%" style="margin-bottom: 10px">
+            <tr>
+                <td width="70%"><span style="font-size: 30px">{{playlist.name}}</span></td>
+            </tr>
+        </table>
+        <table width="100%" style="margin-bottom: 10px">
+            <tr>
+                <td width="35%" style="padding: 0"><img [src]="playlist.avatar"></td>
+                <td style="background-image: url(https://saigon-gpdaily.com.vn/wp-content/uploads/2018/08/hinh-nen-powerpoint-9.jpg);
                  background-repeat: no-repeat">
-          <p style="font-size: 20px;color: black">{{playlist.name}}</p>
-        </td>
-      </tr>
-    </table>
-    <ngx-audio-player [playlist]="track" [displayTitle]="true" [autoPlay]="false"
-                      muted="muted" [displayPlaylist]="true"
-                      [displayArtist]="true" [displayDuration]="true"
-                      [expanded]="true" [displayVolumeControls]="true"
-                      [disablePositionSlider]="false">
-    </ngx-audio-player>
-  </div>
+                    <p style="font-size: 32px;color: rgb(44, 11, 235)">&nbsp;&nbsp;{{playlist.name}}</p>
+                </td>
+            </tr>
+        </table>
+        <table width="100%" style="margin-bottom: 10px">
+            <ngx-audio-player [playlist]="track" [displayTitle]="true" [autoPlay]="true" muted="muted"
+                    [displayPlaylist]="true" [displayArtist]="true" [displayDuration]="true" [expanded]="true"
+                    [displayVolumeControls]="true" [disablePositionSlider]="false">
+                </ngx-audio-player>
+        </table>
+    </div>
 </div>
 <app-footer></app-footer>
