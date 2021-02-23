@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <ngx-audio-player [autoPlay]="false" 
+          <ngx-audio-player [autoPlay]="true" 
                             [displayPlaylist]="false" 
                             [displayTitle]="false" 
                             [displayVolumeControls]="true" 
@@ -75,6 +75,9 @@
           <button *ngIf="!showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Collapse</button>
         </td>
       </tr>
+    </table>
+    <table>
+      <app-comment-song></app-comment-song>
     </table>
   </div>
 </div>

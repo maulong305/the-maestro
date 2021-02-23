@@ -1,0 +1,35 @@
+<div class="comments-app">
+    <h1>Comments</h1>
+    <div class="comments">
+      <div *ngIf="!currentUser">
+        <p>Please<a href="/login">Login</a> to comment. If you do not have an account, Please <a href="/register">Register</a></p>
+      </div>
+      <div class="comment-form">
+        <div class="comment-avatar" *ngIf="currentUser">
+          <img src="{{avatar}}" alt="" width="120">
+        </div>
+  
+        <form class="form" name="form" *ngIf="currentUser" (ngSubmit)="postComment()">
+          <div class="form-row">
+            <textarea [(ngModel)]="commentSong.content" name="content"
+                      class="input"
+                      placeholder="Comment here..."
+            ></textarea>
+          </div>
+          <div class="form-row">
+            <input style="font-size: 20px; background: dodgerblue" type="submit" value="Đăng">
+          </div>
+        </form>
+  
+      </div>
+      <h2 style="color: blue; margin-left: 5px">Lates Comment</h2>
+      <div class="comment" [(ngModel)]="listCommentSong" *ngFor="let comment of listCommentSong; let i = index">
+        <!-- Comment Avatar -->
+        <div class="comment-avatar">
+          <img src="{{userDetails[i].avatar}}" width="120">
+        </div>
+      </div>
+      <button type="button" (click)="showMore()" style="float: right; margin-bottom: 17px" class="btn btn-link">Seemore...</button>
+    </div>
+  </div>
+  
