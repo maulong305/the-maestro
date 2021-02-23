@@ -31,10 +31,10 @@
             <div class="comment-text">{{comment.content}}</div>
             <div class="comment-footer">
               <div class="comment-info">
-                <span class="comment-author">
-                  <a href="mailto:sexar@pagelab.io">{{comment.user.username}}</a>
+                <span class="comment-author" *ngIf="comment.user!.username != undefined">
+                  <a href="mailto:sexar@pagelab.io">{{comment.user!.username}}</a>
                 </span>
-                <span class="comment-date">{{comment.creationTime.substring(0,10) + " - " + comment.creationTime.substring(0,10)}}</span>
+                <span class="comment-date" *ngIf="comment.creationTime != null && comment.creationTime" >{{comment.creationTime.substring(0,10) + " - " + comment.creationTime.substring(0,10)}}</span>
               </div>
     
               <div class="comment-actions">
