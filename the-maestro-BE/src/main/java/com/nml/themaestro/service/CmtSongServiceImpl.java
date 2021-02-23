@@ -4,7 +4,9 @@ import com.nml.themaestro.model.CommentSong;
 import com.nml.themaestro.model.Song;
 import com.nml.themaestro.repository.CmtSongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CmtSongServiceImpl implements CmtSongService{
     @Autowired
     CmtSongRepository cmtSongRepository;
