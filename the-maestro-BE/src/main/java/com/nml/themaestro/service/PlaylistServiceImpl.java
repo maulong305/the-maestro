@@ -2,11 +2,13 @@ package com.nml.themaestro.service;
 
 import com.nml.themaestro.model.Playlist;
 import com.nml.themaestro.model.Song;
+import com.nml.themaestro.model.Track;
 import com.nml.themaestro.repository.PlaylistRepository;
 import com.nml.themaestro.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -58,6 +60,20 @@ public class PlaylistServiceImpl implements PlaylistService{
         playlist.setSongs(songs);
         playlistRepository.save(playlist);
         return playlist;
+    }
+
+    @Override
+    public List<Track> getTrackPlaylistById(Long idPlaylist) {
+        List<Track> tracks = new ArrayList<>();
+        List<Song> songs = playlistRepository.findById(idPlaylist).get().getSongs();
+        for (Song song: songs){
+            Track track = new Track();
+            track.setLink(song.getFile());
+            track.setArtist(song.getAuthor());
+            track.setTitle(song.getName());
+            tracks.add(track);
+        }
+        return tracks;
     }
 
 }
