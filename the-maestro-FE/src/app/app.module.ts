@@ -28,6 +28,7 @@ import { CreatePlaylistComponent } from './playlist/create-playlist/create-playl
 import { ListPlaylistsComponent } from './playlist/list-playlists/list-playlists.component';
 import { LatestPlaylistsComponent } from './playlist/latest-playlists/latest-playlists.component';
 import { CommentSongComponent } from './song/comment-song/comment-song.component';
+import { PlayPlaylistComponent } from './playlist/play-playlist/play-playlist.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { CommentSongComponent } from './song/comment-song/comment-song.component
     CreatePlaylistComponent,
     ListPlaylistsComponent,
     LatestPlaylistsComponent,
-    CommentSongComponent
+    CommentSongComponent,
+    PlayPlaylistComponent
   ],
   imports: [
     BrowserModule,
