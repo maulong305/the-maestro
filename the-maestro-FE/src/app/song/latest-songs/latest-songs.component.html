@@ -1,4 +1,5 @@
-<div class="card-header">
+<div class="container-fluid mt-4" style="width: 82%; height: auto; margin: 0 auto">
+  <div class="card-header">
     <span class="h4">Latest Song</span>
   </div>
   <div class="card-body">
@@ -11,7 +12,9 @@
           <h4 class="mt-0 mb-1"><a [routerLink]="['/playsong/'+song.id]">{{song.name}}</a></h4>
           <small>{{song.author}}</small>
         </div>
-        <a [routerLink]="['/playsongs/'+song.id]" class="px-2 py-1 mr-2 bg-success text-white" title="Play"><i class="fas fa-play"></i></a>
+        <a [routerLink]="['/playsongs/'+song.id]" class="px-2 py-1 mr-2 bg-success text-white" title="Play"><i
+            class="fas fa-play"></i></a>
       </li>
     </ul>
   </div>
+</div>

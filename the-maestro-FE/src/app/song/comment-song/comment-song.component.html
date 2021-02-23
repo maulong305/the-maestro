@@ -1,6 +1,6 @@
-<div class="comments-app">
+
     <h1>Comments</h1>
-    <div class="comments">
+    
       <div *ngIf="!currentUser">
         <p>Please<a href="/login">Login</a> to comment. If you do not have an account, Please <a href="/register">Register</a></p>
       </div>
@@ -17,19 +17,29 @@
             ></textarea>
           </div>
           <div class="form-row">
-            <input style="font-size: 20px; background: dodgerblue" type="submit" value="Đăng">
+            <input style="font-size: 20px; background: rgb(12, 240, 240)" type="submit" value="Submit">
           </div>
         </form>
   
       </div>
       <h2 style="color: blue; margin-left: 5px">Lates Comment</h2>
       <div class="comment" [(ngModel)]="listCommentSong" *ngFor="let comment of listCommentSong; let i = index">
-        <!-- Comment Avatar -->
         <div class="comment-avatar">
           <img src="{{userDetails[i].avatar}}" width="120">
         </div>
+        <div class="comment-box">
+            <div class="comment-text">{{comment.content}}</div>
+            <div class="comment-footer">
+              <div class="comment-info">
+                <span class="comment-author">
+                  <a href="mailto:sexar@pagelab.io">{{comment.user.username}}</a>
+                </span>
+                <span class="comment-date">{{comment.creationTime.substring(0,10) + " - " + comment.creationTime.substring(0,10)}}</span>
+              </div>
+    
+              <div class="comment-actions">
+              </div>
+            </div>
       </div>
       <button type="button" (click)="showMore()" style="float: right; margin-bottom: 17px" class="btn btn-link">Seemore...</button>
-    </div>
-  </div>
   
