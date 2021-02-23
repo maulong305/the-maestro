@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div style="margin-top: 50px"></div>
+<div class="row">
+  <div class="col-md-7" style="margin-left:70px">
+    <table width="100%" style="margin-bottom: 10px">
+      <tr>
+        <td width="70%"><span style="font-size: 30px">{{playlist.name}}</span></td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td width="35%" style="padding: 0"><img [src]="playlist.avatar"></td>
+        <td
+          style="background-image: url(https://anhdep.tv/attachments/dd5d8b8e6f192fd55d554cbc2edddb4f-jpeg.9863/);
+                 background-repeat: no-repeat">
+          <p style="font-size: 20px;color: black">{{playlist.name}}</p>
+        </td>
+      </tr>
+    </table>
+    <ngx-audio-player [playlist]="track" [displayTitle]="true" [autoPlay]="false"
+                      muted="muted" [displayPlaylist]="true"
+                      [displayArtist]="true" [displayDuration]="true"
+                      [expanded]="true" [displayVolumeControls]="true"
+                      [disablePositionSlider]="false">
+    </ngx-audio-player>
+  </div>
+</div>
+<app-footer></app-footer>
