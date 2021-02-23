@@ -4,15 +4,15 @@
     <table width="100%" style="margin-bottom: 10px">
       <tr>
         <td width="100%" style="padding-bottom: 10px; font-size: 20px">{{song.name}} - {{song.author}}</td>
-    </tr>
+      </tr>
     </table>
     <table width="100%" style="margin-bottom: 10px">
       <tr>
         <td width="35%" style="padding: 0"><img [src]="song.avatar"></td>
         <td width="100%" style="background-image: url(https://saigon-gpdaily.com.vn/wp-content/uploads/2018/08/hinh-nen-powerpoint-9.jpg);
                background-repeat: no-repeat">
-         <span style="font-size: 32px;color: rgb(60, 7, 182)">
-          &nbsp;&nbsp;{{song.name}}
+          <span style="font-size: 32px;color: rgb(60, 7, 182)">
+            &nbsp;&nbsp;{{song.name}}
             <br>
             <br>
             &nbsp;&nbsp;Singer: {{song.singer}}
@@ -21,19 +21,14 @@
       </tr>
       <tr>
         <td colspan="2">
-          <ngx-audio-player [autoPlay]="true" 
-                            [displayPlaylist]="false" 
-                            [displayTitle]="false" 
-                            [displayVolumeControls]="true" 
-                            [disablePositionSlider]="false" 
-                            [displayDuration]="true" 
-                            [expanded]="true" 
-                            [playlist]="singleTrack">
+          <ngx-audio-player [autoPlay]="true" [displayPlaylist]="false" [displayTitle]="false"
+            [displayVolumeControls]="true" [disablePositionSlider]="false" [displayDuration]="true" [expanded]="true"
+            [playlist]="singleTrack">
           </ngx-audio-player>
         </td>
       </tr>
     </table>
-    <table width="100%" style="margin-bottom: 10px">
+    <table class="table table-bordered">
       <tr>
         <td width="40%"><span style="font-size: 15px">Played by</span></td>
       </tr>
@@ -44,42 +39,49 @@
         <td rowspan="2">
           <div class="dropdown" align="right">
             <a class="btn btn-light btg-lg dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Add to playlist
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <ng-container *ngFor="let playlist of listPlaylist">
-                <button class="dropdown-item" *ngIf="id != null && playlist.id != null" (click)="addSongToPlaylist(id,playlist.id)">{{playlist.name}}</button>
+                <button class="dropdown-item" *ngIf="id != null && playlist.id != null"
+                  (click)="addSongToPlaylist(id,playlist.id)">{{playlist.name}}</button>
               </ng-container>
             </div>
           </div>
         </td>
       </ng-container>
     </table>
-    <table width="100%" style="margin-bottom: 10px">
+    <br>
+    <table class="table table-bordered">
       <tr>
         <td>
-          <strong style="font-size: 20px">Lyric: {{song.name}}</strong>
-          <br/>
-          <span style="font-size: 17px;color: gray">Author: {{song.author}}</span>
+          <strong style="font-size: 25px">{{song.name}}</strong>
+          <br />
+          <span style="font-size: 20px;color: gray">Author: {{song.author}}</span>
           <br>
-          <span style="font-size: 17px;color: gray">Singer: {{song.singer}}</span> 
+          <span style="font-size: 20px;color: gray">Singer: {{song.singer}}</span>
         </td>
       </tr>
       <tr>
         <td>
-          <pre class="lyric" *ngIf="showFullLyric" style="display: block;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
-          <pre *ngIf="!showFullLyric" style="display: inline;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
+          <pre class="lyric" *ngIf="showFullLyric"
+            style="display: block;font-size: 20px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
+          <pre *ngIf="!showFullLyric"
+            style="display: inline;font-size: 22px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
           <br *ngIf="!showFullLyric">
-          <span><button *ngIf="showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">See more</button></span>
+          <span><button *ngIf="showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">See
+              more</button></span>
           <button *ngIf="!showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Collapse</button>
         </td>
       </tr>
     </table>
-    <table>
+
+  </div>
+  <div class="item item-1">
+    <table class="table table-bordered">
       <app-comment-song></app-comment-song>
     </table>
   </div>
-</div>
-<app-footer></app-footer>
+  <app-footer></app-footer>
