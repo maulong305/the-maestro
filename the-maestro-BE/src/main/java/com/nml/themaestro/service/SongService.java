@@ -10,4 +10,5 @@ public interface SongService {
 
     Iterable<Song> findAllByUserId(Long idUser);
     Iterable<Song> latest();
+    Iterable<Song> findByName(String keyword);
 }
